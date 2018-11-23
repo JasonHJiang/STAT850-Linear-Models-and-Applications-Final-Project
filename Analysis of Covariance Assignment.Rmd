@@ -1,0 +1,63 @@
+---
+title: "Analysis of Covariance Assignment Question"
+author: "Haiyang Jiang (Jason) & Sichen Liu (Coco)"
+date: '2018-11-20'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this assignment, we will look at the sexab dataset. The response variable is 'ptsd' and the independent variables are 'csa' (as a factor) and 'cpa' (as a covariate). We will go through the Analysis of Covariance step by step.
+
+Setup in R:
+```{r}
+library(car)
+library(ggplot2)
+library(multcomp)
+library(faraway)
+data(sexab,package='faraway')
+# If you would like to know the details about this dataset
+?sexab
+```
+
+a. We first would like to plot 'cpa' vs 'ptsd' for both levels of 'csa' seperately. Fill in the blanks for the following code.
+```{r}
+ggplot(aes(x = , y = ),data=) +
+  geom_point() + 
+  facet_wrap(~ )
+```
+
+b. Build an ANOVA model for 'ptsd' vs 'csa', and a linear model for 'ptsd' vs 'cpa'. Check if the normality and equal variance assumptions are met for these two models. If not, perform an appropriate transformation.
+```{r}
+
+```
+
+
+c. Check if the assumption of homogeneity of regression slopes is met through an ANOVA test.
+```{r}
+full_mod <- aov( ~  * , data=)
+anova(full_mod)
+```
+
+
+d. As mentioned, we can use ggplot to visualize if the regression lines are parallel. Please fill in the blanks for the following code:
+```{r}
+ggplot(, aes(x=, y=, color=, shape=)) +
+  geom_point() + 
+  geom_smooth(method=lm, se=FALSE, fullrange=TRUE) +
+  labs(x = "") + 
+  labs(y = "") + 
+  labs(title = "Scatterplot of sexab Data with fitted regression lines")
+```
+
+
+e. Build the model and perform an ANCOVA test. Conclude on your findings.
+```{r}
+red_mod <- aov( ~ ., data=)
+Anova(red_mod,type='2')
+```
+
+
+
